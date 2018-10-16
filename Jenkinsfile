@@ -10,7 +10,7 @@ pipeline {
         }
         stage('DeployToStaging') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'jenkins', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'staging', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
@@ -31,7 +31,6 @@ pipeline {
                                 ]
                             )
                         ]
-                    )
                 }
             }
         }
